@@ -24,6 +24,8 @@
 		B4D80C35260BB03400817BC2 /* ComicsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C33260BB03400817BC2 /* ComicsInteractor.swift */; };
 		B4D80C36260BB03400817BC2 /* ComicsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C31260BB03400817BC2 /* ComicsPresenter.swift */; };
 		B4D80C3A260BB08600817BC2 /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C39260BB08600817BC2 /* ComicsModel.swift */; };
+		B4D80C52260BCE6300817BC2 /* SeriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C51260BCE6300817BC2 /* SeriesModel.swift */; };
+		B4D80C55260BD1EC00817BC2 /* StoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C54260BD1EC00817BC2 /* StoriesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		B4D80C32260BB03400817BC2 /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
 		B4D80C33260BB03400817BC2 /* ComicsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInteractor.swift; sourceTree = "<group>"; };
 		B4D80C39260BB08600817BC2 /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
+		B4D80C51260BCE6300817BC2 /* SeriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesModel.swift; sourceTree = "<group>"; };
+		B4D80C54260BD1EC00817BC2 /* StoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				B4D80C39260BB08600817BC2 /* ComicsModel.swift */,
+				B4D80C51260BCE6300817BC2 /* SeriesModel.swift */,
+				B4D80C54260BD1EC00817BC2 /* StoriesModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -283,12 +289,14 @@
 				B4327DCB260BA9A400B988F4 /* Utils.swift in Sources */,
 				B4D80C2B260BB01F00817BC2 /* ComicsProvider.swift in Sources */,
 				B4D80C3A260BB08600817BC2 /* ComicsModel.swift in Sources */,
+				B4D80C55260BD1EC00817BC2 /* StoriesModel.swift in Sources */,
 				B4327DBF260BA9A400B988F4 /* SceneModule.swift in Sources */,
 				B4327DC2260BA9A400B988F4 /* VIP.swift in Sources */,
 				B4327DC5260BA9A400B988F4 /* BaseProvider.swift in Sources */,
 				B4327DC8260BA9A400B988F4 /* RequestManager.swift in Sources */,
 				B4D80C34260BB03400817BC2 /* ComicsView.swift in Sources */,
 				B4327DE3260BA9A400B988F4 /* ContentView.swift in Sources */,
+				B4D80C52260BCE6300817BC2 /* SeriesModel.swift in Sources */,
 				B4D80C28260BB01B00817BC2 /* ComicsModule.swift in Sources */,
 				B4D80C36260BB03400817BC2 /* ComicsPresenter.swift in Sources */,
 				B4327DE1260BA9A400B988F4 /* iCoComicsApp.swift in Sources */,

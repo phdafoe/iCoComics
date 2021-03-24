@@ -35,10 +35,30 @@ class ComicsInteractor: InteractorInterface {
 extension ComicsInteractor: ComicsInteractorPresenterInterface {
 
     func fetchDataInteractor() {
-        self.provider.fetchDataFromWeb { [weak self] (resultComicsModel) in
+        //1
+        self.provider.fetchDataComicsFromWeb { [weak self] (resultComicsModel) in
             guard let self = self else { return }
             if let resultComicsModelDes = resultComicsModel {
                 self.presenter.getDataComicsModelFromInteractor(data: resultComicsModelDes.data?.results)
+                //2
+                self.provider.fetchDataSeriesFromWeb { (resultSeriesModel) in
+                    if let resultSeriesModelDes = resultSeriesModel {
+                        self.presenter.getDataSeriesModelFromInteractor(data: resultSeriesModelDes.data?.results)
+                        
+                        //3
+                        self.provider.fetchDataStoriesFromWeb { (resultStoriesModel) in
+                            if let resultStoriesModelDes = resultStoriesModel {
+                                self.presenter.getDataStoriesModelFromInteractor(data: resultStoriesModelDes.data?.results)
+                            }
+                        } failure: { (errorApi) in
+                            print(errorApi)
+                        }
+
+                    }
+                } failure: { (errorApi) in
+                    print(errorApi.localizedDescription)
+                }
+
             }
         } failure: { (errorApi) in
             print(errorApi.localizedDescription)

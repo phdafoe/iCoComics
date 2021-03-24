@@ -20,12 +20,16 @@ import Foundation
 
 protocol ComicsPresenterInteractorInterface: PresenterInteractorInterface {
     func getDataComicsModelFromInteractor(data: [ResultComics]?)
+    func getDataSeriesModelFromInteractor(data: [ResultSeries]?)
+    func getDataStoriesModelFromInteractor(data: [ResultStories]?)
 }
 
 final class ComicsPresenter: PresenterInterface, ObservableObject {
     
     // MARK: Variables
     @Published var comicsList: [ResultComics] = []
+    @Published var seriesList: [ResultSeries] = []
+    @Published var storiesList: [ResultStories] = []
 
     // MARK: VIPER Dependencies
     var interactor: ComicsInteractorPresenterInterface!
@@ -41,5 +45,15 @@ extension ComicsPresenter: ComicsPresenterInteractorInterface {
     func getDataComicsModelFromInteractor(data: [ResultComics]?) {
         guard let dataDes = data else { return }
         self.comicsList = dataDes
+    }
+    
+    func getDataSeriesModelFromInteractor(data: [ResultSeries]?) {
+        guard let dataDes = data else { return }
+        self.seriesList = dataDes
+    }
+    
+    func getDataStoriesModelFromInteractor(data: [ResultStories]?) {
+        guard let dataDes = data else { return }
+        self.storiesList = dataDes
     }
 }

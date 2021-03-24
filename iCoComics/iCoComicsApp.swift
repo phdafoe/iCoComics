@@ -11,7 +11,7 @@ import SwiftUI
 struct iCoComicsApp: App {
     var body: some Scene {
         WindowGroup {
-            ComicsModule().navigation()
+            ComicsModule().navigation().environment(\.colorScheme, .dark)
         }
     }
 }

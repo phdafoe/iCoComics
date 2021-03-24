@@ -19,14 +19,16 @@
 import Foundation
 
 protocol ComicsProviderProtocol {
-    func fetchDataFromWeb(_ completion: @escaping (ComicsModel?) -> (), failure: @escaping(APIError) -> ())
+    func fetchDataComicsFromWeb(_ completion: @escaping (ComicsModel?) -> (), failure: @escaping(APIError) -> ())
+    func fetchDataSeriesFromWeb(_ completion: @escaping (SeriesModel?) -> (), failure: @escaping(APIError) -> ())
+    func fetchDataStoriesFromWeb(_ completion: @escaping (StoriesModel?) -> (), failure: @escaping(APIError) -> ())
 }
 
 class ComicsProvider: ComicsProviderProtocol {
 
     private let dataService = BaseProvider()
     
-    internal func fetchDataFromWeb(_ completion: @escaping (ComicsModel?) -> (), failure: @escaping(APIError) -> ()) {
+    internal func fetchDataComicsFromWeb(_ completion: @escaping (ComicsModel?) -> (), failure: @escaping(APIError) -> ()) {
 
         ///Example call webservice
         let parameters = [
@@ -39,6 +41,48 @@ class ComicsProvider: ComicsProviderProtocol {
         
         self.dataService.request(request: providerRD,
                                  entityClass: ComicsModel.self) { [weak self] (result) in
+            guard self != nil else { return }
+            if let resultDes = result {
+                completion(resultDes)
+            }
+        } failure: { (error) in
+            failure(error)
+        }
+    }
+    
+    internal func fetchDataSeriesFromWeb(_ completion: @escaping (SeriesModel?) -> (), failure: @escaping(APIError) -> ()) {
+        ///Example call webservice
+        let parameters = [
+            "contains": "comic",
+            "orderBy": "title",
+            "hash": "\(Utils().getHash())",
+            "ts": "\(Utils().getTimeStamp())"
+        ]
+        let providerRD = RequestData(params: parameters, method: .get, urlContext: .webService, endpoint: URLEndpoint.series)
+        
+        self.dataService.request(request: providerRD,
+                                 entityClass: SeriesModel.self) { [weak self] (result) in
+            guard self != nil else { return }
+            if let resultDes = result {
+                completion(resultDes)
+            }
+        } failure: { (error) in
+            failure(error)
+        }
+    }
+    
+    internal func fetchDataStoriesFromWeb(_ completion: @escaping (StoriesModel?) -> (), failure: @escaping(APIError) -> ()) {
+        ///Example call webservice
+        let parameters = [
+            "limit": "20",
+            "orderBy": "id",
+            "hash": "\(Utils().getHash())",
+            "ts": "\(Utils().getTimeStamp())"
+        ]
+        let providerRD = RequestData(params: parameters, method: .get, urlContext: .webService, endpoint: URLEndpoint.stories)
+        
+        self.dataService.request(request: providerRD,
+                                 entityClass: StoriesModel.self) { [weak self] (result) in
             guard self != nil else { return }
             if let resultDes = result {
                 completion(resultDes)
