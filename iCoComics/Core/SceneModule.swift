@@ -15,8 +15,8 @@ final class SceneModule: SceneModuleProtocol{
     private(set) var window: UIWindow?
     
     internal func applicationShowInitVC(_ window : UIWindow, scene: UIScene) {
-        window.rootViewController = MoviesModule().build()
-        self.window = window
-        window.makeKeyAndVisible()
+//        window.rootViewController = MoviesModule().build()
+//        self.window = window
+//        window.makeKeyAndVisible()
     }
 }

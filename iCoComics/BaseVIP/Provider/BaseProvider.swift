@@ -26,7 +26,7 @@ class BaseProvider {
                              additionalHeader: additionalHeader,
                              entityClass: entityClass) { [weak self] (result) in
             
-            guard self != nil else { return }
+            guard let self = self else { return }
             switch result {
             case .success(let response):
                 success(response)

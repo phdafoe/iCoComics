@@ -5,6 +5,7 @@
 // See README.md for more information
 
 import Foundation
+import CryptoSwift
 
 // MARK: - ApiError
 enum APIError: Error, CustomNSError {
@@ -14,6 +15,7 @@ enum APIError: Error, CustomNSError {
     case invalidResponse
     case noData
     case serializationError
+    case missingTimestamp
     
     var localizedDescription: String {
         switch self {
@@ -22,6 +24,7 @@ enum APIError: Error, CustomNSError {
         case .invalidResponse: return "Invalild response"
         case .noData: return "No data"
         case .serializationError: return "Failed to decode data"
+        case .missingTimestamp: return "Missing Timestamp"
         }
     }
     
@@ -96,7 +99,9 @@ struct URLEndpoint {
     }
 
     //ENDPOINTS
-    static var moviesApple = "podcasts/top-podcasts/all/10/explicit.json"
+    static var comics = "comics"
+    static var series = "series"
+    static var stories = "stories"
     
 }
 
@@ -108,7 +113,7 @@ extension URLEndpoint {
         case .backend:
             return "my backend service"
         case .webService:
-            return "https://rss.itunes.apple.com/api/v1/es/"
+            return "https://gateway.marvel.com/v1/public/"
         }
     }
 }
@@ -125,4 +130,25 @@ class Utils{
         dateFormatter.dateFormat = "yyyy-mm-dd"
         return dateFormatter
     }()
+    
+    //MARK: - GET TIMESTAMP
+    func getTimeStamp() -> String{
+        let xData = Int(round(Date().timeIntervalSince1970))
+        return "\(xData)"
+    }
+    
+    //MARK: - GET HASH
+    func getHash() -> String{
+        let pTimeStamp = self.getTimeStamp()
+        let hash = (pTimeStamp+Utils.BaseURL().privateApiKey+Utils.BaseURL().publicApiKey).md5()
+        return hash
+    }
+    
+    struct BaseURL {
+        let publicApiKey = "96883215ffa72a3c8dfa23e3883f6866"
+        let privateApiKey = "9d1a45359c89f37c4e2d5a0ee6d826572624e785"
+        let baseAPIURL = "https://gateway.marvel.com/v1/public"
+        let urlSession = URLSession.shared
+        let jsonDecoder = Utils.jsonDecoder
+    }
 }

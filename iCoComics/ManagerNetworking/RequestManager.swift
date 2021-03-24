@@ -46,7 +46,7 @@ class RequestManager {
             }
         }
         
-        let targetURL = self.addURLQueryParameters(toURL: URL(string: endpoint)!)
+        let targetURL = self.addURLQueryParameters(toURL: URL(string: endpoint)!, params: request.params)
         let httpBody = self.getHttpBody()
         guard let request = self.prepareRequest(withURL: targetURL, httpBody: httpBody, httpMethod: request.method) else {
             preconditionFailure()
@@ -72,7 +72,7 @@ class RequestManager {
             }
             
             do {
-                let decodeResponse = try self.jsonDecoder.decode(T.self, from: dataDes)
+                let decodeResponse = try JSONDecoder().decode(T.self, from: dataDes)
                 self.executeCompletionHandlerInMainThread(whit: .success(decodeResponse), completion: completionHandler)
             } catch {
                 self.executeCompletionHandlerInMainThread(whit: .failure(.serializationError), completion: completionHandler)
@@ -88,23 +88,40 @@ class RequestManager {
         }
     }
     
-    private func addURLQueryParameters(toURL url: URL) -> URL {
+    private func addURLQueryParameters(toURL url: URL, params: [String: Any]?) -> URL {
         if urlQueryParameters.totalItems() > 0 {
-            guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return url }
-            var queryItems = [URLQueryItem]()
             
-            for (key, value) in urlQueryParameters.allValues() {
-                let item = URLQueryItem(name: key, value: value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
-                
-                queryItems.append(item)
-                urlComponents.queryItems?.append(item)
-            }
-            for query in queryItems {
-                urlComponents.queryItems?.append(query)
+            guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+                //completion(.failure(.invalidEndpoint))
+                return url
             }
             
-            guard let updatedURL = urlComponents.url else { return url }
-            return updatedURL
+            var queryItemsArray = [URLQueryItem(name: "apikey", value: Utils.BaseURL().publicApiKey)]
+            if let paramsDes = params {
+                queryItemsArray.append(contentsOf: paramsDes.map { URLQueryItem(name: $0.key, value: $0.value as? String)})
+            }
+            
+            urlComponents.queryItems = queryItemsArray
+            guard let finalURL = urlComponents.url else {
+                //completion(.failure(.invalidEndpoint))
+                return url
+            }
+            
+//            guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return url }
+//            var queryItems = [URLQueryItem]()
+//
+//            for (key, value) in urlQueryParameters.allValues() {
+//                let item = URLQueryItem(name: key, value: value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
+//
+//                queryItems.append(item)
+//                urlComponents.queryItems?.append(item)
+//            }
+//            for query in queryItems {
+//                urlComponents.queryItems?.append(query)
+//            }
+//
+//            guard let updatedURL = urlComponents.url else { return url }
+            return finalURL
         }
         
         return url

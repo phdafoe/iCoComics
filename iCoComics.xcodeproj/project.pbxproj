@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,16 +13,17 @@
 		B4327DC8260BA9A400B988F4 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DC7260BA9A400B988F4 /* RequestManager.swift */; };
 		B4327DCB260BA9A400B988F4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DCA260BA9A400B988F4 /* Utils.swift */; };
 		B4327DCD260BA9A400B988F4 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B4327DCC260BA9A400B988F4 /* swiftlint.yml */; };
-		B4327DD1260BA9A400B988F4 /* MoviesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DD0260BA9A400B988F4 /* MoviesProvider.swift */; };
-		B4327DD4260BA9A400B988F4 /* MoviesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DD3260BA9A400B988F4 /* MoviesModule.swift */; };
-		B4327DD7260BA9A400B988F4 /* MoviesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DD6260BA9A400B988F4 /* MoviesEntity.swift */; };
-		B4327DDB260BA9A400B988F4 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DDA260BA9A400B988F4 /* MoviesView.swift */; };
-		B4327DDD260BA9A400B988F4 /* MoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DDC260BA9A400B988F4 /* MoviesPresenter.swift */; };
-		B4327DDF260BA9A400B988F4 /* MoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DDE260BA9A400B988F4 /* MoviesInteractor.swift */; };
 		B4327DE1260BA9A400B988F4 /* iCoComicsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DE0260BA9A400B988F4 /* iCoComicsApp.swift */; };
 		B4327DE3260BA9A400B988F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4327DE2260BA9A400B988F4 /* ContentView.swift */; };
 		B4327DE5260BA9A500B988F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4327DE4260BA9A500B988F4 /* Assets.xcassets */; };
 		B4327DE8260BA9A500B988F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4327DE7260BA9A500B988F4 /* Preview Assets.xcassets */; };
+		B4327DF4260BAAE600B988F4 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B4327DF3260BAAE600B988F4 /* CryptoSwift */; };
+		B4D80C28260BB01B00817BC2 /* ComicsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C27260BB01B00817BC2 /* ComicsModule.swift */; };
+		B4D80C2B260BB01F00817BC2 /* ComicsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C2A260BB01F00817BC2 /* ComicsProvider.swift */; };
+		B4D80C34260BB03400817BC2 /* ComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C32260BB03400817BC2 /* ComicsView.swift */; };
+		B4D80C35260BB03400817BC2 /* ComicsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C33260BB03400817BC2 /* ComicsInteractor.swift */; };
+		B4D80C36260BB03400817BC2 /* ComicsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C31260BB03400817BC2 /* ComicsPresenter.swift */; };
+		B4D80C3A260BB08600817BC2 /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D80C39260BB08600817BC2 /* ComicsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,17 +34,17 @@
 		B4327DC7260BA9A400B988F4 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		B4327DCA260BA9A400B988F4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B4327DCC260BA9A400B988F4 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
-		B4327DD0260BA9A400B988F4 /* MoviesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesProvider.swift; sourceTree = "<group>"; };
-		B4327DD3260BA9A400B988F4 /* MoviesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModule.swift; sourceTree = "<group>"; };
-		B4327DD6260BA9A400B988F4 /* MoviesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesEntity.swift; sourceTree = "<group>"; };
-		B4327DDA260BA9A400B988F4 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
-		B4327DDC260BA9A400B988F4 /* MoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesPresenter.swift; sourceTree = "<group>"; };
-		B4327DDE260BA9A400B988F4 /* MoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesInteractor.swift; sourceTree = "<group>"; };
 		B4327DE0260BA9A400B988F4 /* iCoComicsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCoComicsApp.swift; sourceTree = "<group>"; };
 		B4327DE2260BA9A400B988F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B4327DE4260BA9A500B988F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4327DE7260BA9A500B988F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B4327DE9260BA9A500B988F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4D80C27260BB01B00817BC2 /* ComicsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModule.swift; sourceTree = "<group>"; };
+		B4D80C2A260BB01F00817BC2 /* ComicsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsProvider.swift; sourceTree = "<group>"; };
+		B4D80C31260BB03400817BC2 /* ComicsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsPresenter.swift; sourceTree = "<group>"; };
+		B4D80C32260BB03400817BC2 /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
+		B4D80C33260BB03400817BC2 /* ComicsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsInteractor.swift; sourceTree = "<group>"; };
+		B4D80C39260BB08600817BC2 /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4327DF4260BAAE600B988F4 /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +148,7 @@
 		B4327DCF260BA9A400B988F4 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				B4327DD0260BA9A400B988F4 /* MoviesProvider.swift */,
+				B4D80C2A260BB01F00817BC2 /* ComicsProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -154,7 +156,7 @@
 		B4327DD2260BA9A400B988F4 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				B4327DD3260BA9A400B988F4 /* MoviesModule.swift */,
+				B4D80C27260BB01B00817BC2 /* ComicsModule.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -162,7 +164,7 @@
 		B4327DD5260BA9A400B988F4 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				B4327DD6260BA9A400B988F4 /* MoviesEntity.swift */,
+				B4D80C39260BB08600817BC2 /* ComicsModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -170,19 +172,9 @@
 		B4327DD8260BA9A400B988F4 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				B4327DD9260BA9A400B988F4 /* MovieView */,
+				B4D80C23260BAFF200817BC2 /* Comics */,
 			);
 			path = Sections;
-			sourceTree = "<group>";
-		};
-		B4327DD9260BA9A400B988F4 /* MovieView */ = {
-			isa = PBXGroup;
-			children = (
-				B4327DDA260BA9A400B988F4 /* MoviesView.swift */,
-				B4327DDC260BA9A400B988F4 /* MoviesPresenter.swift */,
-				B4327DDE260BA9A400B988F4 /* MoviesInteractor.swift */,
-			);
-			path = MovieView;
 			sourceTree = "<group>";
 		};
 		B4327DE6260BA9A500B988F4 /* Preview Content */ = {
@@ -191,6 +183,16 @@
 				B4327DE7260BA9A500B988F4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B4D80C23260BAFF200817BC2 /* Comics */ = {
+			isa = PBXGroup;
+			children = (
+				B4D80C33260BB03400817BC2 /* ComicsInteractor.swift */,
+				B4D80C31260BB03400817BC2 /* ComicsPresenter.swift */,
+				B4D80C32260BB03400817BC2 /* ComicsView.swift */,
+			);
+			path = Comics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +211,9 @@
 			dependencies = (
 			);
 			name = iCoComics;
+			packageProductDependencies = (
+				B4327DF3260BAAE600B988F4 /* CryptoSwift */,
+			);
 			productName = iCoComics;
 			productReference = B4327DBA260BA9A400B988F4 /* iCoComics.app */;
 			productType = "com.apple.product-type.application";
@@ -236,6 +241,9 @@
 				Base,
 			);
 			mainGroup = B4327DB1260BA9A300B988F4;
+			packageReferences = (
+				B4327DF2260BAAE600B988F4 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+			);
 			productRefGroup = B4327DBB260BA9A400B988F4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,18 +271,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4D80C35260BB03400817BC2 /* ComicsInteractor.swift in Sources */,
 				B4327DCB260BA9A400B988F4 /* Utils.swift in Sources */,
-				B4327DD4260BA9A400B988F4 /* MoviesModule.swift in Sources */,
+				B4D80C2B260BB01F00817BC2 /* ComicsProvider.swift in Sources */,
+				B4D80C3A260BB08600817BC2 /* ComicsModel.swift in Sources */,
 				B4327DBF260BA9A400B988F4 /* SceneModule.swift in Sources */,
 				B4327DC2260BA9A400B988F4 /* VIP.swift in Sources */,
-				B4327DD1260BA9A400B988F4 /* MoviesProvider.swift in Sources */,
-				B4327DD7260BA9A400B988F4 /* MoviesEntity.swift in Sources */,
 				B4327DC5260BA9A400B988F4 /* BaseProvider.swift in Sources */,
-				B4327DDB260BA9A400B988F4 /* MoviesView.swift in Sources */,
-				B4327DDF260BA9A400B988F4 /* MoviesInteractor.swift in Sources */,
 				B4327DC8260BA9A400B988F4 /* RequestManager.swift in Sources */,
+				B4D80C34260BB03400817BC2 /* ComicsView.swift in Sources */,
 				B4327DE3260BA9A400B988F4 /* ContentView.swift in Sources */,
-				B4327DDD260BA9A400B988F4 /* MoviesPresenter.swift in Sources */,
+				B4D80C28260BB01B00817BC2 /* ComicsModule.swift in Sources */,
+				B4D80C36260BB03400817BC2 /* ComicsPresenter.swift in Sources */,
 				B4327DE1260BA9A400B988F4 /* iCoComicsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +472,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B4327DF2260BAAE600B988F4 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B4327DF3260BAAE600B988F4 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4327DF2260BAAE600B988F4 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B4327DB2260BA9A300B988F4 /* Project object */;
 }
