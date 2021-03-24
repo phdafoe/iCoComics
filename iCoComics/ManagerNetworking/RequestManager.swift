@@ -92,7 +92,6 @@ class RequestManager {
         if urlQueryParameters.totalItems() > 0 {
             
             guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-                //completion(.failure(.invalidEndpoint))
                 return url
             }
             
@@ -103,24 +102,9 @@ class RequestManager {
             
             urlComponents.queryItems = queryItemsArray
             guard let finalURL = urlComponents.url else {
-                //completion(.failure(.invalidEndpoint))
                 return url
             }
-            
-//            guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return url }
-//            var queryItems = [URLQueryItem]()
-//
-//            for (key, value) in urlQueryParameters.allValues() {
-//                let item = URLQueryItem(name: key, value: value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
-//
-//                queryItems.append(item)
-//                urlComponents.queryItems?.append(item)
-//            }
-//            for query in queryItems {
-//                urlComponents.queryItems?.append(query)
-//            }
-//
-//            guard let updatedURL = urlComponents.url else { return url }
+
             return finalURL
         }
         

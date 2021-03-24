@@ -176,11 +176,8 @@ struct Thumbnail: Decodable  {
         case thumbnailExtension = "extension"
     }
     
-    var pathURL: URL? {
-        if path != nil {
-            return URL(string: "\(path ?? "").jpg")!
-        }
-        return nil
+    var pathURL: URL {
+        return URL(string: "\(path ?? "").jpg")!
     }
 }
 

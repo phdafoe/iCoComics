@@ -137,6 +137,7 @@
 		B4327DCE260BA9A400B988F4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B4D80C3D260BC75700817BC2 /* Managers */,
 				B4327DCF260BA9A400B988F4 /* Providers */,
 				B4327DD2260BA9A400B988F4 /* Coordinators */,
 				B4327DD5260BA9A400B988F4 /* Entities */,
@@ -193,6 +194,13 @@
 				B4D80C32260BB03400817BC2 /* ComicsView.swift */,
 			);
 			path = Comics;
+			sourceTree = "<group>";
+		};
+		B4D80C3D260BC75700817BC2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

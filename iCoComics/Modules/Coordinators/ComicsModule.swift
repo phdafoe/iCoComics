@@ -25,6 +25,12 @@ final class ComicsModule: ModuleInterface {
     typealias Presenter = ComicsPresenter
     typealias Interactor = ComicsInteractor
     
+    func navigation() -> NavigationView<ContentView> {
+        NavigationView {
+            build()
+        }
+    }
+    
     func build() -> ContentView {
         let presenter = Presenter()
         let interactor = Interactor()
