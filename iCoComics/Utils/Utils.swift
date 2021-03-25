@@ -103,6 +103,8 @@ struct URLEndpoint {
     static var comics = "comics"
     static var series = "series"
     static var stories = "stories"
+    static var events = "events"
+    static var characters = "characters"
     
 }
 

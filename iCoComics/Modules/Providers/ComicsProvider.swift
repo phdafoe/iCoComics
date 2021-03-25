@@ -22,6 +22,8 @@ protocol ComicsProviderProtocol {
     func fetchDataComicsFromWeb(_ completion: @escaping (ComicsModel?) -> (), failure: @escaping(APIError) -> ())
     func fetchDataSeriesFromWeb(_ completion: @escaping (SeriesModel?) -> (), failure: @escaping(APIError) -> ())
     func fetchDataStoriesFromWeb(_ completion: @escaping (StoriesModel?) -> (), failure: @escaping(APIError) -> ())
+    func fetchDataEventsFromWeb(_ completion: @escaping (EventsModel?) -> (), failure: @escaping(APIError) -> ())
+    func fetchDataCharactersFromWeb(_ completion: @escaping (CharacteresModel?) -> (), failure: @escaping(APIError) -> ())
 }
 
 class ComicsProvider: ComicsProviderProtocol {
@@ -83,6 +85,48 @@ class ComicsProvider: ComicsProviderProtocol {
         
         self.dataService.request(request: providerRD,
                                  entityClass: StoriesModel.self) { [weak self] (result) in
+            guard self != nil else { return }
+            if let resultDes = result {
+                completion(resultDes)
+            }
+        } failure: { (error) in
+            failure(error)
+        }
+    }
+    
+    internal func fetchDataEventsFromWeb(_ completion: @escaping (EventsModel?) -> (), failure: @escaping(APIError) -> ()) {
+        ///Example call webservice
+        let parameters = [
+            "limit": "20",
+            "orderBy": "name",
+            "hash": "\(Utils().getHash())",
+            "ts": "\(Utils().getTimeStamp())"
+        ]
+        let providerRD = RequestData(params: parameters, method: .get, urlContext: .webService, endpoint: URLEndpoint.events)
+        
+        self.dataService.request(request: providerRD,
+                                 entityClass: EventsModel.self) { [weak self] (result) in
+            guard self != nil else { return }
+            if let resultDes = result {
+                completion(resultDes)
+            }
+        } failure: { (error) in
+            failure(error)
+        }
+    }
+    
+    internal func fetchDataCharactersFromWeb(_ completion: @escaping (CharacteresModel?) -> (), failure: @escaping(APIError) -> ()) {
+        ///Example call webservice
+        let parameters = [
+            "limit": "5",
+            "orderBy": "name",
+            "hash": "\(Utils().getHash())",
+            "ts": "\(Utils().getTimeStamp())"
+        ]
+        let providerRD = RequestData(params: parameters, method: .get, urlContext: .webService, endpoint: URLEndpoint.characters)
+        
+        self.dataService.request(request: providerRD,
+                                 entityClass: CharacteresModel.self) { [weak self] (result) in
             guard self != nil else { return }
             if let resultDes = result {
                 completion(resultDes)

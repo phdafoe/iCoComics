@@ -22,9 +22,13 @@ struct ComicsView: View {
     
     // MARK: ObservedObject -> MVVM Dependencies
     @ObservedObject var viewModel = ComicsPresenter()
+    @State var index = 0
     
     var body: some View {
         List{
+            
+            //TabBarCustomView(selection: self.$index, viewModel: self.viewModel)
+            
             Group{
                 ComicPosterCarouselView(title: "Comics", comics: self.viewModel.comicsList)
             }.listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
@@ -35,6 +39,10 @@ struct ComicsView: View {
             
             Group{
                 StoriesPosterCarouselView(title: "Stories", stories: self.viewModel.storiesList)
+            }.listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
+            
+            Group{
+                EventsPosterCarouselView(title: "Events", events: self.viewModel.eventsList)
             }.listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
         }
         .navigationBarTitle("Comics by Marvel")
@@ -50,6 +58,48 @@ struct Comics_Previews: PreviewProvider {
     }
 }
 
+struct TabBarCustomView: View {
+    
+    @ObservedObject var imageLoader = ImageLoader()
+    @Binding var selection: Int
+    @ObservedObject var viewModel: ComicsPresenter
+    @State private var gradientA: [Color] = [Color.red, Color.clear]
+    
+    var body: some View {
+        TabView(selection: self.$selection) {
+            ForEach(self.viewModel.charectersList) { character in
+                ZStack{
+                    if self.imageLoader.image != nil {
+                        Image(uiImage: self.imageLoader.image!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(8)
+                            .shadow(radius: 4)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray, lineWidth: 1)
+                            )
+                        
+                    } else {
+                        Rectangle()
+                            .fill(LinearGradient(gradient: Gradient(colors: self.gradientA), startPoint: .bottom, endPoint: .top))
+                            .cornerRadius(8)
+                            .shadow(radius: 4)
+                        
+                        Text(character.name ?? "")
+                            .multilineTextAlignment(.center)
+                    }
+                }.onAppear(perform: {
+                    self.imageLoader.loadImage(whit: (character.thumbnail?.pathURL)!)
+                })
+            }
+        }
+        .frame(height: 230)
+        .padding(.top, 25)
+        .tabViewStyle(PageTabViewStyle())
+        .animation(.easeOut)
+    }
+}
 
 // MARK: - MovieBackdropCarouselView
 struct ComicPosterCarouselView: View {
@@ -233,7 +283,7 @@ struct StoriePosterCard: View {
     @State private var gradientA: [Color] = [Color.red, Color.clear]
     
     var body: some View {
-        ZStack{
+        ZStack(alignment:.bottomLeading){
             if self.imageLoader.image != nil {
                 Image(uiImage: self.imageLoader.image!)
                     .resizable()
@@ -251,13 +301,89 @@ struct StoriePosterCard: View {
                     .cornerRadius(8)
                     .shadow(radius: 4)
                 
-                Text(storie.title ?? "")
-                    .multilineTextAlignment(.center)
+                VStack(alignment: .leading){
+                    Text(storie.title ?? "")
+                        .multilineTextAlignment(.leading)
+                    Text(storie.type ?? "")
+                        .font(.headline)
+                }.padding()
             }
         }
+        
         .frame(width: 240, height: 240)
         .onAppear(perform: {
             //self.imageLoader.loadImage(whit: (self.storie.thumbnail?.pathURL)!)
+        })
+    }
+}
+
+
+// MARK: - EventsPosterCarouselView
+struct EventsPosterCarouselView: View {
+    
+    let title: String
+    let events: [ResultEvents]
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0, content: {
+            HStack{
+                Text(title).font(.title).fontWeight(.bold).padding(.horizontal)
+                Rectangle()
+                    .fill(Color(UIColor.red).opacity(0.3))
+                    .frame(width: 50, height: 5)
+            }.padding(.bottom, 10)
+            
+            
+            ScrollView(.horizontal, showsIndicators: false, content: {
+                HStack(alignment: .top, spacing: 16, content: {
+                    ForEach(self.events){ event in
+                        NavigationLink(destination: Text("AQUI ANDRES DETALLE")){
+                            EventPosterCard(event: event)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.leading, event.id == self.events.first!.id ? 16 : 0)
+                        .padding(.trailing, event.id == self.events.last!.id ? 16 : 0)
+                    }
+                })
+            })
+        })
+    }
+}
+
+
+// MARK: - SeriePosterCard
+struct EventPosterCard: View {
+    
+    let event: ResultEvents
+    @ObservedObject var imageLoader = ImageLoader()
+    @State private var gradientA: [Color] = [Color.red, Color.clear]
+    
+    var body: some View {
+        ZStack(alignment:.bottomLeading){
+            if self.imageLoader.image != nil {
+                Image(uiImage: self.imageLoader.image!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(8)
+                    .shadow(radius: 4)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+                
+            } else {
+                Rectangle()
+                    .fill(LinearGradient(gradient: Gradient(colors: self.gradientA), startPoint: .bottom, endPoint: .top))
+                    .cornerRadius(8)
+                    .shadow(radius: 4)
+                Text(event.title ?? "")
+                    .multilineTextAlignment(.leading)
+            }
+        }
+        
+        .frame(width: 240, height: 240)
+        .onAppear(perform: {
+            self.imageLoader.loadImage(whit: (self.event.thumbnail?.pathURL)!)
         })
     }
 }

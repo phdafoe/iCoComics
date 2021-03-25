@@ -22,6 +22,8 @@ protocol ComicsPresenterInteractorInterface: PresenterInteractorInterface {
     func getDataComicsModelFromInteractor(data: [ResultComics]?)
     func getDataSeriesModelFromInteractor(data: [ResultSeries]?)
     func getDataStoriesModelFromInteractor(data: [ResultStories]?)
+    func getDataEventsModelFromInteractor(data: [ResultEvents]?)
+    func getDataCharactersModelFromInteractor(data: [ResultCharacter]?)
 }
 
 final class ComicsPresenter: PresenterInterface, ObservableObject {
@@ -30,13 +32,18 @@ final class ComicsPresenter: PresenterInterface, ObservableObject {
     @Published var comicsList: [ResultComics] = []
     @Published var seriesList: [ResultSeries] = []
     @Published var storiesList: [ResultStories] = []
+    @Published var eventsList: [ResultEvents] = []
+    @Published var charectersList: [ResultCharacter] = []
 
     // MARK: VIPER Dependencies
     var interactor: ComicsInteractorPresenterInterface!
     
     // MARK: Private Functions
     func viewDidLoad() {
-        self.interactor.fetchDataInteractor()
+        self.interactor.fetchDataComicsInteractor()
+        self.interactor.fetchDataSeriesInteractor()
+        self.interactor.fetchDataStoriesInteractor()
+        self.interactor.fetchDataEventsInteractor()
     }
 }
 
@@ -55,5 +62,15 @@ extension ComicsPresenter: ComicsPresenterInteractorInterface {
     func getDataStoriesModelFromInteractor(data: [ResultStories]?) {
         guard let dataDes = data else { return }
         self.storiesList = dataDes
+    }
+    
+    func getDataEventsModelFromInteractor(data: [ResultEvents]?) {
+        guard let dataDes = data else { return }
+        self.eventsList = dataDes
+    }
+    
+    func getDataCharactersModelFromInteractor(data: [ResultCharacter]?) {
+        guard let dataDes = data else { return }
+        self.charectersList = dataDes
     }
 }
