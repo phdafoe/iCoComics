@@ -26,9 +26,10 @@ struct ComicsView: View {
     
     var body: some View {
         List{
-            
-            //TabBarCustomView(selection: self.$index, viewModel: self.viewModel)
-            
+            Group{
+                TabBarCustomView(selection: self.$index, arrayData: self.viewModel.charectersList)
+            }.listRowInsets(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+    
             Group{
                 ComicPosterCarouselView(title: "Comics", comics: self.viewModel.comicsList)
             }.listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 8, trailing: 0))
@@ -62,42 +63,27 @@ struct TabBarCustomView: View {
     
     @ObservedObject var imageLoader = ImageLoader()
     @Binding var selection: Int
-    @ObservedObject var viewModel: ComicsPresenter
-    @State private var gradientA: [Color] = [Color.red, Color.clear]
+    var arrayData: [ResultCharacter]
     
     var body: some View {
         TabView(selection: self.$selection) {
-            ForEach(self.viewModel.charectersList) { character in
+            ForEach(self.arrayData) { character in
                 ZStack{
                     if self.imageLoader.image != nil {
                         Image(uiImage: self.imageLoader.image!)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(8)
-                            .shadow(radius: 4)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray, lineWidth: 1)
-                            )
-                        
-                    } else {
-                        Rectangle()
-                            .fill(LinearGradient(gradient: Gradient(colors: self.gradientA), startPoint: .bottom, endPoint: .top))
-                            .cornerRadius(8)
-                            .shadow(radius: 4)
-                        
-                        Text(character.name ?? "")
-                            .multilineTextAlignment(.center)
+                            .aspectRatio(contentMode: .fill)
+                            .tag(character)
                     }
                 }.onAppear(perform: {
                     self.imageLoader.loadImage(whit: (character.thumbnail?.pathURL)!)
                 })
             }
         }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
         .frame(height: 230)
         .padding(.top, 25)
-        .tabViewStyle(PageTabViewStyle())
-        .animation(.easeOut)
+        .id(selection)
     }
 }
 

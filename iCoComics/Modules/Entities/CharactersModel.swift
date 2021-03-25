@@ -71,3 +71,14 @@ struct ResultCharacter: Decodable, Identifiable  {
         case urls = "urls"
     }
 }
+
+extension ResultCharacter: Hashable, Equatable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

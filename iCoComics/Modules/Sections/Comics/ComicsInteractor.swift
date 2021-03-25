@@ -23,6 +23,7 @@ protocol ComicsInteractorPresenterInterface: InteractorPresenterInterface {
     func fetchDataSeriesInteractor()
     func fetchDataStoriesInteractor()
     func fetchDataEventsInteractor()
+    func fetchDataCharactersInteractor() 
 }
 
 class ComicsInteractor: InteractorInterface {

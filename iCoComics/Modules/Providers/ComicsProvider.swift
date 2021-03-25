@@ -35,7 +35,7 @@ class ComicsProvider: ComicsProviderProtocol {
         ///Example call webservice
         let parameters = [
             "orderBy": "title",
-            "limit": "20",
+            "limit": "10",
             "hash": "\(Utils().getHash())",
             "ts": "\(Utils().getTimeStamp())"
         ]
@@ -55,6 +55,7 @@ class ComicsProvider: ComicsProviderProtocol {
     internal func fetchDataSeriesFromWeb(_ completion: @escaping (SeriesModel?) -> (), failure: @escaping(APIError) -> ()) {
         ///Example call webservice
         let parameters = [
+            "limit": "10",
             "contains": "comic",
             "orderBy": "title",
             "hash": "\(Utils().getHash())",
@@ -76,7 +77,7 @@ class ComicsProvider: ComicsProviderProtocol {
     internal func fetchDataStoriesFromWeb(_ completion: @escaping (StoriesModel?) -> (), failure: @escaping(APIError) -> ()) {
         ///Example call webservice
         let parameters = [
-            "limit": "20",
+            "limit": "10",
             "orderBy": "id",
             "hash": "\(Utils().getHash())",
             "ts": "\(Utils().getTimeStamp())"
@@ -97,7 +98,7 @@ class ComicsProvider: ComicsProviderProtocol {
     internal func fetchDataEventsFromWeb(_ completion: @escaping (EventsModel?) -> (), failure: @escaping(APIError) -> ()) {
         ///Example call webservice
         let parameters = [
-            "limit": "20",
+            "limit": "10",
             "orderBy": "name",
             "hash": "\(Utils().getHash())",
             "ts": "\(Utils().getTimeStamp())"

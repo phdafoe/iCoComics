@@ -44,6 +44,7 @@ final class ComicsPresenter: PresenterInterface, ObservableObject {
         self.interactor.fetchDataSeriesInteractor()
         self.interactor.fetchDataStoriesInteractor()
         self.interactor.fetchDataEventsInteractor()
+        self.interactor.fetchDataCharactersInteractor()
     }
 }
 
