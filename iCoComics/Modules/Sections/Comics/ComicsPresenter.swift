@@ -24,6 +24,7 @@ protocol ComicsPresenterInteractorInterface: PresenterInteractorInterface {
     func getDataStoriesModelFromInteractor(data: [ResultStories]?)
     func getDataEventsModelFromInteractor(data: [ResultEvents]?)
     func getDataCharactersModelFromInteractor(data: [ResultCharacter]?)
+    func getImageFromUrl(_ imageUrl : String)
 }
 
 final class ComicsPresenter: PresenterInterface, ObservableObject {
@@ -34,6 +35,10 @@ final class ComicsPresenter: PresenterInterface, ObservableObject {
     @Published var storiesList: [ResultStories] = []
     @Published var eventsList: [ResultEvents] = []
     @Published var charectersList: [ResultCharacter] = []
+    
+    @Published var data = Data()
+        
+        
 
     // MARK: VIPER Dependencies
     var interactor: ComicsInteractorPresenterInterface!
@@ -41,14 +46,25 @@ final class ComicsPresenter: PresenterInterface, ObservableObject {
     // MARK: Private Functions
     func viewDidLoad() {
         self.interactor.fetchDataComicsInteractor()
-        self.interactor.fetchDataSeriesInteractor()
-        self.interactor.fetchDataStoriesInteractor()
-        self.interactor.fetchDataEventsInteractor()
+        //self.interactor.fetchDataSeriesInteractor()
+        //self.interactor.fetchDataStoriesInteractor()
+        //self.interactor.fetchDataEventsInteractor()
         self.interactor.fetchDataCharactersInteractor()
     }
 }
 
 extension ComicsPresenter: ComicsPresenterInteractorInterface {
+    
+    internal func getImageFromUrl(_ imageUrl : String){
+        guard let url = URL(string: imageUrl) else { return }
+        let task = URLSession.shared.dataTask(with: url) { (data, response, err) in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                self.data = data
+            }
+        }
+        task.resume()
+    }
 
     func getDataComicsModelFromInteractor(data: [ResultComics]?) {
         guard let dataDes = data else { return }

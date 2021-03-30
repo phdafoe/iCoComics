@@ -176,8 +176,8 @@ struct Thumbnail: Decodable  {
         case thumbnailExtension = "extension"
     }
     
-    var pathURL: URL {
-        return URL(string: "\(path ?? "").jpg")!
+    var pathURL: String {
+        return "\(path ?? "").jpg"
     }
 }
 
